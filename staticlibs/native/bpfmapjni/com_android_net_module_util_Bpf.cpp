@@ -138,10 +138,12 @@ static jboolean com_android_net_module_util_BpfMap_nativeFindMapEntry(JNIEnv *en
 
 static jint com_android_net_module_util_BpfMap_nativeSynchronizeKernelRCU(JNIEnv *env,
                                                                           jclass clazz) {
+#if 0
     const int pfSocket = socket(AF_KEY, SOCK_RAW | SOCK_CLOEXEC, PF_KEY_V2);
     if (pfSocket < 0) return -errno;
     // On Linux close() will always close the fd, any error it returns is a previous pending error.
     if (close(pfSocket)) return -errno;  // in practice cannot fail
+#endif
     return 0;
 }
 
